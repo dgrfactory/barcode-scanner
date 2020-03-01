@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Barcode-Scanner Sample</title>
+    <style>
+      span {position: relative; display: inline-block;}
+      video {position: absolute; left: 0; top: 0; display: block; width: 640px;}
+      div.laser {position: absolute; background: red; opacity: 0.5;}
+      div.laser.horizontal {left: 0; width: 100%;}
+      div.laser.vertical {top: 0; height: 100%;}
+      div.laser.found {background: lime;}
+      canvas {position: absolute; left: 0; top: 0; pointer-events: none; opacity: 0;}
+      canvas.horizontal {width: 1280px; height: 10px;}
+      canvas.vertical {width: 10px; height: 1280px;}
+      label.code {font-size: 3.6em; font-family: monospace; white-space: pre-line;}
+    </style>
+    <script src="sample.min.js"></script>
+  </head>
+  <body>
+    <section>
+      <button id="on-button">ON</button>
+      <button id="off-button">OFF</button>
+      <select name="direction">
+        <option value="horizontal" selected>horizontal</option>
+        <option value="vertical">vertical</option>
+      </select>
+      <label><input type="checkbox" name="barcode-type" value="code128" checked>CODE128</label>
+      <label><input type="checkbox" name="barcode-type" value="code39" checked>CODE39</label>
+      <label><input type="checkbox" name="barcode-type" value="code93" checked>CODE93</label>
+      <label><input type="checkbox" name="barcode-type" value="jan13" checked>JAN-13</label>
+      <label><input type="checkbox" name="barcode-type" value="jan8" checked>JAN-8</label>
+      <label><input type="checkbox" name="barcode-type" value="itf14" checked>ITF-14</label>
+      <label><input type="checkbox" name="barcode-type" value="nw7" checked>NW-7</label>
+      <label><input type="checkbox" name="barcode-type" value="itf">ITF (NCD)</label>
+      <label><input type="checkbox" name="barcode-type" value="coop">COOP</label>
+    </section>
+    <section>
+      <span>
+        <video autoplay muted playsinline></video>
+        <div class="laser"></div>
+        <canvas></canvas>
+      </span>
+    </section>
+    <section>
+      <label class="code"></label>
+    </section>
+  </body>
+</html>
