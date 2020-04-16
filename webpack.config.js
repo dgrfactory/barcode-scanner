@@ -1,4 +1,7 @@
 const path = require('path');
+const webpack = require('webpack');
+const packageJson = require('./package.json');
+const copyright = `${packageJson.name} v${packageJson.version} | ${packageJson.author} | license: ${packageJson.license}`;
 
 module.exports = {
   mode: 'production',
@@ -32,5 +35,8 @@ module.exports = {
         {loader: 'ts-loader', options: {transpileOnly: true, happyPackMode: true}}
       ]
     }]
-  }
+  },
+  plugins: [
+    new webpack.BannerPlugin(copyright)
+  ]
 };
